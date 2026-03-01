@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: forza-plus
+    runtime: static
+    branch: main
+    buildCommand: ""
+    staticPublishPath: ./
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"

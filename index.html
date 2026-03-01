@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forza | Design 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Syne:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20250228-g" />
+</head>
+<body>
+  <canvas id="nebula-canvas" aria-hidden="true"></canvas>
+
+  <header class="header-shell" id="top">
+    <a class="logo" href="#top">
+      <img src="Branding/logo.png" alt="Forza" />
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="header-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+
+    <nav id="header-nav" class="header-nav" aria-label="Primary navigation">
+      <a href="streams.html">Streams</a>
+      <a href="#posts">Posts</a>
+      <a href="#shop">Shop</a>
+      <a href="#shop">Exclusive</a>
+      <a href="#shop">Donate</a>
+    </nav>
+
+    <a class="accounts" href="#accounts" aria-label="Accounts">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M5 20c1.6-3.6 4.5-5.2 7-5.2S17.4 16.4 19 20"></path>
+      </svg>
+      <span>Accounts</span>
+    </a>
+  </header>
+
+  <main>
+    <section class="hero-grid glass reveal">
+      <div>
+        <p class="label">Far-right influencer platform</p>
+        <h1>Stream truth. Fight for Christ.</h1>
+        <p class="copy">Goy-to-goy golden nuggets: unfiltered commentary, live streams, and the fight for truth in a fallen world.</p>
+        <div class="hero-actions">
+          <a href="streams.html" class="btn primary">Explore Streams</a>
+          <a href="#posts" class="btn ghost">Open Posts</a>
+        </div>
+      </div>
+      <div class="pulse-card">
+        <h2>Live Pulse</h2>
+        <p>Viewers watching</p>
+        <strong class="counter" data-target="218340">0</strong>
+        <div class="mini-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card-grid">
+      <article class="glass reveal" id="streams">
+        <h3>Streams</h3>
+        <p>Uncensored live streams, raw commentary, and the fight for Christ and truth in real time.</p>
+      </article>
+      <article class="glass reveal" id="posts">
+        <h3>Posts</h3>
+        <p>Goy-to-goy golden nuggets: sharp posts, memes, and truth bombs that cut through the noise.</p>
+      </article>
+      <article class="glass reveal" id="shop">
+        <h3>Shop</h3>
+        <p>Exclusive merch and drops for the faithful—wear the fight, fund the truth.</p>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
