@@ -5,10 +5,10 @@ Static site for Forza, deployed from GitHub to Render.
 ## Project structure
 
 - `index.html` - Homepage
-- `streams.html` - Streams page
+- `watch.html` - Watch page
 - `style.css` - Shared styles
 - `script.js` - Homepage JS
-- `streams.js` - Streams page JS
+- `watch.js` - Watch page JS
 - `Branding/` - Image assets (`logo.png`, `background.png`, `background-mobile.png`)
 - `render.yaml` - Render Blueprint config
 
@@ -25,7 +25,7 @@ python -m http.server 8080
 Then open:
 
 - `http://localhost:8080/`
-- `http://localhost:8080/streams.html`
+- `http://localhost:8080/watch.html`
 
 ## Git workflow
 
