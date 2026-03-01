@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forza | Posts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Syne:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=20250301-p" />
+</head>
+<body>
+  <canvas id="nebula-canvas" aria-hidden="true"></canvas>
+
+  <header class="header-shell" id="top">
+    <a class="logo" href="index.html#top">
+      <img src="Branding/logo.png" alt="Forza" />
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="header-nav">
+      <span></span><span></span><span></span>
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+
+    <nav id="header-nav" class="header-nav" aria-label="Primary navigation">
+      <a href="watch.html">Watch</a>
+      <a href="posts.html" aria-current="page">Posts</a>
+      <a href="index.html#shop">Shop</a>
+      <a href="index.html#shop">Exclusive</a>
+      <a href="donate.html">Donate</a>
+    </nav>
+
+    <a class="accounts" href="#accounts" aria-label="Accounts">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M5 20c1.6-3.6 4.5-5.2 7-5.2S17.4 16.4 19 20"></path>
+      </svg>
+      <span>Accounts</span>
+    </a>
+  </header>
+
+  <main class="posts-main">
+    <section class="posts-hero glass reveal">
+      <p class="label">Posts</p>
+      <h1>Follow the live X feed.</h1>
+      <p class="copy">This page pulls together the @forza__777 profile timeline and a scraped snapshot so viewers can quickly track the latest commentary in one place.</p>
+      <div class="posts-actions">
+        <a href="https://x.com/forza__777" class="btn primary" target="_blank" rel="noopener noreferrer">Open X Profile</a>
+        <a href="https://x.com/forza__777/with_replies" class="btn ghost" target="_blank" rel="noopener noreferrer">View Replies</a>
+      </div>
+    </section>
+
+    <section class="posts-layout reveal">
+      <article class="glass x-embed-card" aria-labelledby="x-embed-title">
+        <h2 id="x-embed-title">X profile embed</h2>
+        <div class="x-embed-shell">
+          <a class="twitter-timeline" data-theme="dark" data-chrome="nofooter noborders transparent" data-tweet-limit="8" href="https://x.com/forza__777?ref_src=twsrc%5Etfw">Posts by @forza__777</a>
+        </div>
+        <p class="embed-note">If this embed is blocked by browser privacy settings, open the profile directly: <a href="https://x.com/forza__777" target="_blank" rel="noopener noreferrer">x.com/forza__777</a>.</p>
+      </article>
+
+      <article class="glass rss-card" aria-labelledby="scraped-title">
+        <div class="rss-label" aria-hidden="true">Scraped Snapshot</div>
+        <h2 id="scraped-title">Recent scraped posts</h2>
+        <ul class="rss-list">
+          <li>
+            <a href="https://x.com/forza__777/status/2028051922490630327" target="_blank" rel="noopener noreferrer">Post 2028051922490630327</a>
+            <time datetime="2026-03-01T10:17:12Z">01 Mar 2026, 10:17 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2028032980149764157" target="_blank" rel="noopener noreferrer">Post 2028032980149764157</a>
+            <time datetime="2026-03-01T09:01:56Z">01 Mar 2026, 09:01 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027933713397649670" target="_blank" rel="noopener noreferrer">Post 2027933713397649670</a>
+            <time datetime="2026-03-01T02:27:29Z">01 Mar 2026, 02:27 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027924390994960757" target="_blank" rel="noopener noreferrer">Post 2027924390994960757</a>
+            <time datetime="2026-03-01T01:50:26Z">01 Mar 2026, 01:50 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027921981673509217" target="_blank" rel="noopener noreferrer">Post 2027921981673509217</a>
+            <time datetime="2026-03-01T01:40:52Z">01 Mar 2026, 01:40 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027908357567484042" target="_blank" rel="noopener noreferrer">Post 2027908357567484042</a>
+            <time datetime="2026-03-01T00:46:43Z">01 Mar 2026, 00:46 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027903782286479455" target="_blank" rel="noopener noreferrer">Post 2027903782286479455</a>
+            <time datetime="2026-03-01T00:28:32Z">01 Mar 2026, 00:28 UTC</time>
+          </li>
+          <li>
+            <a href="https://x.com/forza__777/status/2027903051210887431" target="_blank" rel="noopener noreferrer">Post 2027903051210887431</a>
+            <time datetime="2026-03-01T00:25:38Z">01 Mar 2026, 00:25 UTC</time>
+          </li>
+        </ul>
+        <p class="rss-source">Source: public RSS snapshot from <a href="https://nitter.net/forza__777/rss" target="_blank" rel="noopener noreferrer">nitter.net/forza__777/rss</a> converted to X links.</p>
+      </article>
+    </section>
+  </main>
+
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="script.js"></script>
+</body>
+</html>
