@@ -43,19 +43,26 @@
     <section class="accounts-hero glass reveal">
       <p class="label">Accounts</p>
       <h1>Manage your membership account.</h1>
-      <p class="copy">This page is now API-powered. Use your account email to load membership status and manage Telegram access links.</p>
-      <p class="accounts-note">MVP mode is enabled while full authentication is being built.</p>
+      <p class="copy">Sign in with a magic link sent to your email, then manage your membership status and Telegram access links.</p>
+      <p class="accounts-note">Account access now requires email-link verification.</p>
     </section>
 
     <section class="accounts-layout reveal">
       <article class="glass account-panel" aria-labelledby="lookup-title">
-        <h2 id="lookup-title">Load account</h2>
+        <h2 id="lookup-title">Email sign-in</h2>
         <form id="accountLookupForm" class="account-lookup-form" novalidate>
           <label for="accountEmail">Account email</label>
           <input id="accountEmail" name="accountEmail" type="email" autocomplete="email" placeholder="demo@freespeechaustralia.org" required />
-          <button class="btn primary" type="submit">Load account</button>
+          <button class="btn primary" type="submit">Send sign-in link</button>
+          <label for="magicLinkToken">Magic-link token (optional manual verify)</label>
+          <input id="magicLinkToken" name="magicLinkToken" type="text" autocomplete="off" placeholder="Paste token from email link if needed" />
         </form>
-        <p class="account-helper">The selected email is sent as an MVP header to the API (`x-user-email`).</p>
+        <div class="account-buttons">
+          <button id="verifyMagicLink" class="btn ghost" type="button">Verify token</button>
+          <button id="loadAccount" class="btn ghost" type="button">Load account</button>
+          <button id="logoutSession" class="btn ghost" type="button">Log out</button>
+        </div>
+        <p class="account-helper">Send a sign-in link first, then verify from your inbox or paste token manually.</p>
       </article>
 
       <article class="glass account-panel" aria-labelledby="status-title">
@@ -108,12 +115,12 @@
     <section class="reveal">
       <article class="glass account-panel account-feedback-panel">
         <h2>Request log</h2>
-        <p id="accountsMessage" class="account-message">Load an account to begin.</p>
+        <p id="accountsMessage" class="account-message">Send a magic link to begin.</p>
       </article>
     </section>
   </main>
 
   <script src="script.js?v=20260302-social-profiles"></script>
-  <script src="accounts.js?v=20260302-mvp"></script>
+  <script src="accounts.js?v=20260302-auth"></script>
 </body>
 </html>
