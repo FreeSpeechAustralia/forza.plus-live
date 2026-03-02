@@ -11,7 +11,6 @@ const accountLookupForm = document.getElementById('accountLookupForm');
 const accountEmailInput = document.getElementById('accountEmail');
 const magicLinkTokenInput = document.getElementById('magicLinkToken');
 const accountStatusPill = document.getElementById('accountStatusPill');
-const accountDisplayName = document.getElementById('accountDisplayName');
 const accountEmailValue = document.getElementById('accountEmailValue');
 const membershipTier = document.getElementById('membershipTier');
 const membershipStatus = document.getElementById('membershipStatus');
@@ -63,7 +62,6 @@ function clearTelegramTokenResult() {
 }
 
 function clearAccountView() {
-  accountDisplayName.textContent = '-';
   accountEmailValue.textContent = '-';
   membershipTier.textContent = '-';
   membershipStatus.textContent = '-';
@@ -147,7 +145,6 @@ function renderAccount(account) {
   const membership = account.membership || {};
   const telegram = account.telegram || { linked: false };
 
-  accountDisplayName.textContent = account.user.displayName || '-';
   accountEmailValue.textContent = account.user.email || '-';
   membershipTier.textContent = membership.tier || 'No tier';
   membershipStatus.textContent = membership.status || 'No membership';
