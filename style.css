@@ -842,6 +842,72 @@ h1 {
   font-size: 0.9rem;
 }
 
+.site-footer {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto 1.4rem;
+}
+
+.site-footer-shell {
+  display: grid;
+  gap: 0.75rem;
+  border-radius: 18px;
+  border: 1px solid rgba(151, 191, 255, 0.26);
+  padding: 0.85rem 1rem;
+}
+
+.site-footer-credit {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer-credit a {
+  color: #d5eeff;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(184, 221, 255, 0.52);
+}
+
+.site-footer-credit a:hover {
+  color: #ffffff;
+}
+
+.footer-instagram-card {
+  margin: 0;
+  padding: 0.72rem 0.82rem;
+  border-color: rgba(255, 182, 154, 0.24);
+  background: linear-gradient(165deg, rgba(36, 18, 56, 0.62), rgba(20, 17, 56, 0.44));
+  box-shadow: inset 0 0 0 1px rgba(255, 193, 145, 0.1);
+}
+
+.footer-instagram-card .instagram-profile-head {
+  gap: 0.62rem;
+}
+
+.footer-instagram-card .profile-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.footer-instagram-card .instagram-profile-meta h2 {
+  font-size: 1rem;
+}
+
+.footer-instagram-card .profile-handle {
+  margin-top: 0.1rem;
+  font-size: 0.84rem;
+}
+
+.footer-instagram-card .instagram-follow-btn {
+  min-height: 1.82rem;
+  padding: 0.34rem 0.72rem;
+  font-size: 0.69rem;
+  letter-spacing: 0.06em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 231, 210, 0.36),
+    0 6px 14px rgba(132, 52, 120, 0.34);
+}
+
 .rss-card {
   border-color: rgba(113, 181, 255, 0.34);
   background: linear-gradient(165deg, rgba(8, 20, 48, 0.84), rgba(10, 31, 72, 0.58));
@@ -1372,6 +1438,15 @@ h1 {
 
   .posts-profile-layout .profile-badge {
     margin-right: 5.5rem;
+  }
+
+  .footer-instagram-card .instagram-profile-head {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .footer-instagram-card .instagram-follow-btn {
+    margin-left: 0;
   }
 
   .donate-layout {
