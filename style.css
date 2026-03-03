@@ -1502,7 +1502,7 @@ h1 {
 
 @media (max-width: 700px) {
   main {
-    padding-bottom: calc(0.35rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(0.18rem + env(safe-area-inset-bottom, 0px));
   }
 
   .footer-instagram-card .instagram-profile-head {
