@@ -880,13 +880,24 @@ h1 {
 }
 
 .footer-instagram-card .instagram-profile-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "avatar meta"
+    "follow follow";
+  align-items: center;
   gap: 0.62rem;
 }
 
 .footer-instagram-card .profile-avatar {
+  grid-area: avatar;
   width: 44px;
   height: 44px;
   border-radius: 12px;
+}
+
+.footer-instagram-card .instagram-profile-meta {
+  grid-area: meta;
 }
 
 .footer-instagram-card .instagram-profile-meta h2 {
@@ -899,6 +910,8 @@ h1 {
 }
 
 .footer-instagram-card .instagram-follow-btn {
+  grid-area: follow;
+  justify-self: flex-start;
   min-height: 1.82rem;
   padding: 0.34rem 0.72rem;
   font-size: 0.69rem;
@@ -1441,8 +1454,8 @@ h1 {
   }
 
   .footer-instagram-card .instagram-profile-head {
-    flex-wrap: wrap;
-    align-items: flex-start;
+    grid-template-columns: auto 1fr;
+    align-items: start;
   }
 
   .footer-instagram-card .instagram-follow-btn {
@@ -1504,7 +1517,7 @@ h1 {
 
 @media (max-width: 700px) {
   main {
-    padding-bottom: calc(2.4rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
   }
 
   body::before {
