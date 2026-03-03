@@ -880,24 +880,19 @@ h1 {
 }
 
 .footer-instagram-card .instagram-profile-head {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    "avatar meta"
-    "follow follow";
+  display: flex;
   align-items: center;
   gap: 0.62rem;
 }
 
 .footer-instagram-card .profile-avatar {
-  grid-area: avatar;
   width: 44px;
   height: 44px;
   border-radius: 12px;
 }
 
 .footer-instagram-card .instagram-profile-meta {
-  grid-area: meta;
+  min-width: 0;
 }
 
 .footer-instagram-card .instagram-profile-meta h2 {
@@ -910,8 +905,7 @@ h1 {
 }
 
 .footer-instagram-card .instagram-follow-btn {
-  grid-area: follow;
-  justify-self: flex-start;
+  margin-left: auto;
   min-height: 1.82rem;
   padding: 0.34rem 0.72rem;
   font-size: 0.69rem;
@@ -1453,15 +1447,6 @@ h1 {
     margin-right: 5.5rem;
   }
 
-  .footer-instagram-card .instagram-profile-head {
-    grid-template-columns: auto 1fr;
-    align-items: start;
-  }
-
-  .footer-instagram-card .instagram-follow-btn {
-    margin-left: 0;
-  }
-
   .donate-layout {
     grid-template-columns: 1fr;
   }
@@ -1517,7 +1502,40 @@ h1 {
 
 @media (max-width: 700px) {
   main {
-    padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(0.35rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer-instagram-card .instagram-profile-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "avatar title title"
+      "avatar handle follow";
+    align-items: center;
+    column-gap: 0.6rem;
+    row-gap: 0.2rem;
+  }
+
+  .footer-instagram-card .instagram-profile-meta {
+    display: contents;
+  }
+
+  .footer-instagram-card .profile-avatar {
+    grid-area: avatar;
+  }
+
+  .footer-instagram-card .instagram-profile-meta h2 {
+    grid-area: title;
+  }
+
+  .footer-instagram-card .profile-handle {
+    grid-area: handle;
+  }
+
+  .footer-instagram-card .instagram-follow-btn {
+    grid-area: follow;
+    margin-left: 0;
+    justify-self: end;
   }
 
   body::before {
