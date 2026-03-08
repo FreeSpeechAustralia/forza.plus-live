@@ -960,12 +960,14 @@ h1 {
 
 .donate-notes,
 .payid-card,
-.paypal-card {
+.paypal-card,
+.solana-card {
   padding: 1.1rem;
 }
 
 .payid-card,
-.paypal-card {
+.paypal-card,
+.solana-card {
   display: flex;
   flex-direction: column;
 }
@@ -976,7 +978,8 @@ h1 {
 
 .donate-notes h2,
 .payid-card h2,
-.paypal-card h2 {
+.paypal-card h2,
+.solana-card h2 {
   margin: 0;
   font-size: 1.3rem;
 }
@@ -1508,7 +1511,8 @@ h1 {
 
   .donate-notes,
   .payid-card,
-  .paypal-card {
+  .paypal-card,
+  .solana-card {
     grid-column: auto;
     grid-row: auto;
   }
