@@ -153,6 +153,15 @@ main {
   margin: 1.4rem auto 1.6rem;
 }
 
+#app-root > section[data-route-page]:not([hidden]) {
+  display: grid;
+  gap: 0.9rem;
+}
+
+#app-root > section[data-route-page][hidden] {
+  display: none;
+}
+
 .streams-main {
   display: grid;
   gap: 0.9rem;
@@ -518,7 +527,6 @@ h1 {
 }
 
 .card-grid {
-  margin-top: 0.95rem;
   display: grid;
   gap: 0.85rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1302,44 +1310,28 @@ h1 {
   gap: 0.8rem;
 }
 
+.membership-actions .btn[data-loading="true"] {
+  opacity: 0.58;
+  cursor: wait;
+}
+
 .membership-note {
   margin: 0.8rem 0 0;
   color: var(--muted);
   font-size: 0.83rem;
 }
 
+.membership-note[data-tone="success"] {
+  color: #c6ffe1;
+}
+
+.membership-note[data-tone="error"] {
+  color: #ffc8c8;
+}
+
 .accounts-main {
   display: grid;
   gap: 0.9rem;
-}
-
-.accounts-coming-soon-main {
-  min-height: clamp(300px, 58vh, 520px);
-  align-content: center;
-}
-
-.accounts-coming-soon {
-  display: grid;
-}
-
-.accounts-coming-soon-card {
-  max-width: min(700px, 100%);
-  margin: 0 auto;
-  padding: clamp(1.25rem, 4vw, 2.2rem);
-  text-align: center;
-}
-
-.accounts-coming-soon-card h1 {
-  margin-top: 0.35rem;
-}
-
-.accounts-coming-soon-card .copy {
-  max-width: 44ch;
-  margin: 0.7rem auto 0;
-}
-
-.accounts-coming-soon-card .accounts-note {
-  margin-top: 0.9rem;
 }
 
 .accounts-hero {
@@ -1364,6 +1356,7 @@ h1 {
 
 .accounts-actions {
   display: grid;
+  gap: 0.9rem;
 }
 
 .account-panel {
@@ -1548,8 +1541,8 @@ h1 {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(16px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 400ms ease, transform 400ms ease;
 }
 
@@ -1691,7 +1684,7 @@ h1 {
   }
 
   body::before {
-    background-image: linear-gradient(160deg, rgba(3, 10, 27, 0.48), rgba(3, 10, 27, 0.28)), url("Branding/background-mobile.png?v=20260303-mobile-bg-force-refresh");
+    background-image: linear-gradient(160deg, rgba(3, 10, 27, 0.48), rgba(3, 10, 27, 0.28)), url("Branding/background-mobile.jpg?v=20260304-mobile-bg-force-refresh");
     background-position: top left, top center;
     background-size: 100% 100%, 100% auto;
     background-repeat: no-repeat, no-repeat;
