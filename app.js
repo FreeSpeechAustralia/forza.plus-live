@@ -210,8 +210,27 @@ function showNotFound(pathname) {
   applyRouteFrame(notFoundRoute);
 }
 
+function redirectTokenLinksToAccounts(currentUrl) {
+  const token = String(currentUrl.searchParams.get('token') || '').trim();
+  if (!token) {
+    return false;
+  }
+
+  const normalizedPath = normalizePath(currentUrl.pathname);
+  if (normalizedPath === '/accounts') {
+    return false;
+  }
+
+  window.history.replaceState({}, '', `/accounts${currentUrl.search}${currentUrl.hash}`);
+  return true;
+}
+
 async function renderCurrentRoute() {
-  const currentUrl = new URL(window.location.href);
+  let currentUrl = new URL(window.location.href);
+  if (redirectTokenLinksToAccounts(currentUrl)) {
+    currentUrl = new URL(window.location.href);
+  }
+
   const normalizedPath = normalizePath(currentUrl.pathname);
   if (normalizedPath !== currentUrl.pathname) {
     window.history.replaceState({}, '', `${normalizedPath}${currentUrl.search}${currentUrl.hash}`);
