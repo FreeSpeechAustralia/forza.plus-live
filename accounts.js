@@ -40,6 +40,7 @@ const telegramTokenValue = document.getElementById('telegramTokenValue');
 const telegramDeepLink = document.getElementById('telegramDeepLink');
 const telegramExpiry = document.getElementById('telegramExpiry');
 const startMembershipCheckoutButton = document.getElementById('startMembershipCheckout');
+const cancelMembershipButton = document.getElementById('cancelMembership');
 
 function getActiveEmail() {
   return String(accountEmailInput.value || '').trim().toLowerCase();
@@ -61,6 +62,9 @@ function setLoading(isLoading, submitLabel = 'Send sign-in link') {
   if (startMembershipCheckoutButton) {
     startMembershipCheckoutButton.disabled = isLoading;
   }
+  if (cancelMembershipButton) {
+    cancelMembershipButton.disabled = isLoading;
+  }
 }
 
 function setCheckoutButtonLoading(isLoading) {
@@ -72,6 +76,27 @@ function setCheckoutButtonLoading(isLoading) {
   startMembershipCheckoutButton.textContent = isLoading
     ? 'Redirecting...'
     : 'Start Membership - $10';
+}
+
+function setCancelButtonLoading(isLoading) {
+  if (!cancelMembershipButton) {
+    return;
+  }
+
+  cancelMembershipButton.disabled = isLoading;
+  cancelMembershipButton.textContent = isLoading
+    ? 'Canceling...'
+    : 'Cancel Membership';
+}
+
+function setMembershipActionButtons(statusInput) {
+  const hasActiveMembership = isMembershipActiveStatus(statusInput);
+  if (startMembershipCheckoutButton) {
+    startMembershipCheckoutButton.hidden = hasActiveMembership;
+  }
+  if (cancelMembershipButton) {
+    cancelMembershipButton.hidden = !hasActiveMembership;
+  }
 }
 
 function setStatusPill(text, tone = 'neutral') {
@@ -96,6 +121,7 @@ function setTelegramActionButtons(isLinked) {
 function hideTelegramToolsForSignedOutState() {
   telegramToolsSection.hidden = true;
   setTelegramActionButtons(false);
+  setMembershipActionButtons(null);
   clearTelegramTokenResult();
 }
 
@@ -227,6 +253,7 @@ function clearAccountView() {
   membershipTier.textContent = '-';
   membershipStatus.textContent = '-';
   telegramStatus.textContent = 'Not linked';
+  setMembershipActionButtons(null);
 }
 
 function resolveMembershipForCreator(account) {
@@ -428,6 +455,7 @@ function renderAccount(account) {
   }
   membershipTier.textContent = membership.tier || 'No tier';
   membershipStatus.textContent = membership.status || 'No membership';
+  setMembershipActionButtons(membership.status);
   telegramToolsSection.hidden = false;
   setTelegramActionButtons(linked);
 
@@ -483,6 +511,57 @@ async function startMembershipCheckout() {
     setMessage(error.message, 'error');
   } finally {
     setCheckoutButtonLoading(false);
+  }
+}
+
+async function cancelMembership() {
+  if (!getSessionToken()) {
+    setStatusPill('Sign in required', 'neutral');
+    setMessage('Sign in with a magic link first, then cancel membership.', 'info');
+    return;
+  }
+
+  setCancelButtonLoading(true);
+
+  try {
+    const payload = await requestJson('/api/v1/stripe/subscription/cancel', {
+      method: 'POST',
+      body: {
+        creatorSlug: STRIPE_CREATOR_SLUG,
+        immediate: false,
+      },
+    });
+
+    const cancellation = payload?.cancellation || {};
+    const accountPayload = await requestJson('/api/v1/accounts/me');
+    if (accountPayload?.account) {
+      renderAccount(accountPayload.account);
+    }
+
+    const currentPeriodEndRaw = cancellation.currentPeriodEnd || cancellation.cancelAt || null;
+    const periodEndSuffix = currentPeriodEndRaw
+      ? ` Current period ends ${new Date(currentPeriodEndRaw).toLocaleString()}.`
+      : '';
+
+    if (cancellation.alreadyCanceled) {
+      setMessage(`Membership was already scheduled to cancel at period end.${periodEndSuffix}`, 'info');
+      return;
+    }
+
+    setMessage(`Membership cancellation scheduled for period end.${periodEndSuffix}`, 'success');
+  } catch (error) {
+    const normalizedMessage = String(error.message || '').toLowerCase();
+    if (normalizedMessage.includes('session') || normalizedMessage.includes('authentication')) {
+      hideTelegramToolsForSignedOutState();
+      setStatusPill('Signed out', 'neutral');
+      setMessage('Session expired. Sign in again, then retry membership cancellation.', 'info');
+      return;
+    }
+
+    setStatusPill('Error', 'error');
+    setMessage(error.message, 'error');
+  } finally {
+    setCancelButtonLoading(false);
   }
 }
 
@@ -717,6 +796,9 @@ createTelegramLinkButton.addEventListener('click', createTelegramLinkToken);
 unlinkTelegramButton.addEventListener('click', unlinkTelegram);
 if (startMembershipCheckoutButton) {
   startMembershipCheckoutButton.addEventListener('click', startMembershipCheckout);
+}
+if (cancelMembershipButton) {
+  cancelMembershipButton.addEventListener('click', cancelMembership);
 }
 
 (function init() {

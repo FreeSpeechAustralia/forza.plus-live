@@ -42,9 +42,9 @@ const ROUTES = {
     key: 'accounts',
     path: '/accounts',
     title: 'Forza | Accounts',
-    fragmentPath: '/fragments/accounts.html?v=20260312-spa',
+    fragmentPath: '/fragments/accounts.html?v=20260319-subscription-cancel',
     mainClass: 'accounts-main',
-    scriptPath: '/accounts.js?v=20260316-membership-sync-poll',
+    scriptPath: '/accounts.js?v=20260319-subscription-cancel',
   },
 };
 
