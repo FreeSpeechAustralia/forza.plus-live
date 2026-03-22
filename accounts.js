@@ -13,6 +13,7 @@ const STRIPE_MEMBERSHIP_POLL_MAX_DURATION_MS = 45000;
 const STRIPE_MEMBERSHIP_TIER = 'supporter';
 const STRIPE_CREATOR_SLUG = String(document.body.dataset.creatorSlug || 'forza').trim().toLowerCase() || 'forza';
 const ACTIVE_MEMBERSHIP_STATUSES = new Set(['active', 'trialing']);
+const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $7.77 <s>$17.77</s>';
 
 let telegramLinkPollTimeoutId = null;
 let telegramLinkPollStopAt = 0;
@@ -73,9 +74,9 @@ function setCheckoutButtonLoading(isLoading) {
   }
 
   startMembershipCheckoutButton.disabled = isLoading;
-  startMembershipCheckoutButton.textContent = isLoading
+  startMembershipCheckoutButton[isLoading ? 'textContent' : 'innerHTML'] = isLoading
     ? 'Redirecting...'
-    : 'Start Membership - $10';
+    : MEMBERSHIP_CHECKOUT_LABEL_HTML;
 }
 
 function setCancelButtonLoading(isLoading) {

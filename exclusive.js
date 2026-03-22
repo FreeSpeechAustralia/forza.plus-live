@@ -7,6 +7,7 @@ const API_BASE_URL = (
 const STORAGE_SESSION_KEY = 'forza.accounts.sessionToken';
 const STRIPE_MEMBERSHIP_TIER = 'supporter';
 const STRIPE_CREATOR_SLUG = String(document.body.dataset.creatorSlug || 'forza').trim().toLowerCase() || 'forza';
+const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $7.77 <s>$17.77</s>';
 
 const startMembershipCheckoutLink = document.getElementById('exclusiveStartMembershipCheckout');
 const membershipCheckoutMessage = document.getElementById('membershipCheckoutMessage');
@@ -32,9 +33,9 @@ function setCheckoutLoading(isLoading) {
 
   startMembershipCheckoutLink.dataset.loading = String(isLoading);
   startMembershipCheckoutLink.style.pointerEvents = isLoading ? 'none' : '';
-  startMembershipCheckoutLink.textContent = isLoading
+  startMembershipCheckoutLink[isLoading ? 'textContent' : 'innerHTML'] = isLoading
     ? 'Redirecting...'
-    : 'Start Membership - $10';
+    : MEMBERSHIP_CHECKOUT_LABEL_HTML;
 }
 
 async function requestCheckoutSession(token) {

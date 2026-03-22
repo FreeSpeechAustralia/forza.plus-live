@@ -27,9 +27,9 @@ const ROUTES = {
     key: 'exclusive',
     path: '/exclusive',
     title: 'Forza | Exclusive',
-    fragmentPath: '/fragments/exclusive.html?v=20260312-spa',
+    fragmentPath: '/fragments/exclusive.html?v=20260323-membership-discount',
     mainClass: 'exclusive-main',
-    scriptPath: '/exclusive.js?v=20260315-stripe-return-fix',
+    scriptPath: '/exclusive.js?v=20260323-membership-discount',
   },
   '/donate': {
     key: 'donate',
@@ -42,9 +42,9 @@ const ROUTES = {
     key: 'accounts',
     path: '/accounts',
     title: 'Forza | Accounts',
-    fragmentPath: '/fragments/accounts.html?v=20260319-subscription-cancel',
+    fragmentPath: '/fragments/accounts.html?v=20260323-membership-discount',
     mainClass: 'accounts-main',
-    scriptPath: '/accounts.js?v=20260319-subscription-cancel',
+    scriptPath: '/accounts.js?v=20260323-membership-discount',
   },
 };
 
