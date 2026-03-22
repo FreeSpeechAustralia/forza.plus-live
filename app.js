@@ -14,7 +14,7 @@ const ROUTES = {
     title: 'Forza | Watch',
     fragmentPath: '/fragments/watch.html?v=20260323-rumble-embed',
     mainClass: 'streams-main',
-    scriptPath: '/watch.js?v=20260323-rumble-embed',
+    scriptPath: '/watch.js?v=20260323-rumble-embed-fix',
   },
   '/posts': {
     key: 'posts',
