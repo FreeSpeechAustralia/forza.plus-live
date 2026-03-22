@@ -12,9 +12,9 @@ const ROUTES = {
     key: 'watch',
     path: '/watch',
     title: 'Forza | Watch',
-    fragmentPath: '/fragments/watch.html?v=20260312-spa',
+    fragmentPath: '/fragments/watch.html?v=20260323-rumble-embed',
     mainClass: 'streams-main',
-    scriptPath: '/watch.js?v=20260312-spa-route',
+    scriptPath: '/watch.js?v=20260323-rumble-embed',
   },
   '/posts': {
     key: 'posts',

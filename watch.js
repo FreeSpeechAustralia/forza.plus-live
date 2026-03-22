@@ -3,7 +3,14 @@ const sortPanel = document.querySelector('.sort-panel');
 const videoGrid = document.getElementById('videoGrid');
 const videoCount = document.getElementById('videoCount');
 
-const videos = [];
+const videos = [
+  {
+    id: 'v779oki',
+    title: 'William Forza Mitchell vs Drew Pavloustein (Host: Sam Bamford) | 2WorldsCollide',
+    sourceUrl: 'https://rumble.com/v779oki-william-forza-mitchell-vs-drew-pavloustein-sam-bamford-as-host-2worldscolli.html?e9s=src_v1_sa%2Csrc_v5_sa_o%2Csrc_v1_ucp_f',
+    rank: 1,
+  },
+];
 
 function sortVideos(mode) {
   const sorted = [...videos];
@@ -41,22 +48,14 @@ function videoCard(video) {
   `;
 }
 
-function videoPlaceholder() {
-  return `
-    <article class="video-placeholder glass" role="status" aria-live="polite">
-      <p>No videos to show yet. Coming soon.</p>
-    </article>
-  `;
-}
-
 function renderVideos(mode = 'latest') {
   if (!videoGrid) return;
 
   const sortedVideos = sortVideos(mode);
 
   if (sortedVideos.length === 0) {
-    videoGrid.innerHTML = videoPlaceholder();
-    if (videoCount) videoCount.textContent = 'Coming soon';
+    videoGrid.innerHTML = '';
+    if (videoCount) videoCount.textContent = '0 videos';
     if (sortSelect) sortSelect.disabled = true;
     if (sortPanel) sortPanel.classList.add('is-empty');
     return;
