@@ -1,34 +1,34 @@
-const SOCIAL_PROFILES_URL = 'social-profiles.json?v=20260303-followers-65184';
+const SOCIAL_PROFILES_URL = 'social-profiles.json?v=20260423-followers-75687';
 const SOCIAL_PROFILES_FALLBACK = {
   forza__777: {
     displayName: 'Forza',
     platforms: {
       x: {
         handle: 'forza__777',
-        followers: 355,
+        followers: 420,
       },
       instagram: [
         {
           handle: 'forza__777',
-          followers: 63145,
+          followers: 73577,
           type: 'primary',
         },
         {
           handle: 'goytogoy',
-          followers: 1676,
+          followers: 1680,
           type: 'backup',
         },
       ],
       kick: {
         handle: 'forzzza',
-        followers: 8,
+        followers: 10,
       },
       rumble: {
         channel: null,
         followers: 0,
       },
     },
-    updatedAt: '2026-03-03',
+    updatedAt: '2026-04-23',
   },
 };
 
