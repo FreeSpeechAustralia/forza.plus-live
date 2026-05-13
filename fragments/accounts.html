@@ -8,10 +8,10 @@
 <section class="accounts-layout reveal">
   <article class="glass account-panel" aria-labelledby="lookup-title">
     <h2 id="lookup-title">Email sign-in</h2>
-    <form id="accountLookupForm" class="account-lookup-form" novalidate>
+    <form id="accountLookupForm" class="account-lookup-form" action="/accounts" method="get" novalidate>
       <label for="accountEmail">Account email</label>
       <input id="accountEmail" name="accountEmail" type="email" autocomplete="email" placeholder="demo@freespeechaustralia.org" required />
-      <button class="btn primary" type="submit">Send sign-in link</button>
+      <button id="sendSignInLink" class="btn primary" type="button">Send sign-in link</button>
     </form>
     <div class="account-buttons">
       <button id="logoutSession" class="btn ghost" type="button">Log out</button>
@@ -49,7 +49,7 @@
     </dl>
 
     <div class="account-buttons">
-      <button id="startMembershipCheckout" class="btn primary" type="button">Start Membership - $7.77 <s>$17.77</s></button>
+      <button id="startMembershipCheckout" class="btn primary" type="button">Start Membership - $17.77</button>
       <button id="cancelMembership" class="btn ghost" type="button" hidden>Cancel Membership</button>
     </div>
     <p class="account-helper">Start or cancel Stripe billing for your supporter membership.</p>

@@ -13,7 +13,7 @@ const STRIPE_MEMBERSHIP_POLL_MAX_DURATION_MS = 45000;
 const STRIPE_MEMBERSHIP_TIER = 'supporter';
 const STRIPE_CREATOR_SLUG = String(document.body.dataset.creatorSlug || 'forza').trim().toLowerCase() || 'forza';
 const ACTIVE_MEMBERSHIP_STATUSES = new Set(['active', 'trialing']);
-const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $7.77 <s>$17.77</s>';
+const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $17.77';
 
 let telegramLinkPollTimeoutId = null;
 let telegramLinkPollStopAt = 0;
@@ -23,6 +23,7 @@ let stripeMembershipPollStopAt = 0;
 let stripeMembershipPollInFlight = false;
 
 const accountLookupForm = document.getElementById('accountLookupForm');
+const sendSignInLinkButton = document.getElementById('sendSignInLink');
 const accountEmailInput = document.getElementById('accountEmail');
 const accountStatusPill = document.getElementById('accountStatusPill');
 const accountEmailValue = document.getElementById('accountEmailValue');
@@ -54,9 +55,10 @@ function setMessage(text, tone = 'info') {
 
 function setLoading(isLoading, submitLabel = 'Send sign-in link') {
   const label = isLoading ? 'Working...' : submitLabel;
-  const submitButton = accountLookupForm.querySelector('button[type="submit"]');
-  submitButton.textContent = label;
-  submitButton.disabled = isLoading;
+  if (sendSignInLinkButton) {
+    sendSignInLinkButton.textContent = label;
+    sendSignInLinkButton.disabled = isLoading;
+  }
   logoutSessionButton.disabled = isLoading;
   createTelegramLinkButton.disabled = isLoading;
   unlinkTelegramButton.disabled = isLoading;
@@ -471,10 +473,18 @@ function renderAccount(account) {
   }
 }
 
+function promptSignInForMembership() {
+  setStatusPill('Sign in required', 'error');
+  setMessage('Sign in with the email magic link first - then click Start Membership again.', 'error');
+  if (accountEmailInput) {
+    accountEmailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    accountEmailInput.focus();
+  }
+}
+
 async function startMembershipCheckout() {
   if (!getSessionToken()) {
-    setStatusPill('Sign in required', 'neutral');
-    setMessage('Sign in with a magic link first, then start membership checkout.', 'info');
+    promptSignInForMembership();
     return;
   }
 
@@ -503,8 +513,7 @@ async function startMembershipCheckout() {
     const normalizedMessage = String(error.message || '').toLowerCase();
     if (normalizedMessage.includes('session') || normalizedMessage.includes('authentication')) {
       hideTelegramToolsForSignedOutState();
-      setStatusPill('Signed out', 'neutral');
-      setMessage('Session expired. Sign in again, then retry membership checkout.', 'info');
+      promptSignInForMembership();
       return;
     }
 
@@ -788,6 +797,13 @@ accountLookupForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   await sendMagicLink();
 });
+
+if (sendSignInLinkButton) {
+  sendSignInLinkButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+    await sendMagicLink();
+  });
+}
 
 logoutSessionButton.addEventListener('click', async () => {
   await logoutSession();
