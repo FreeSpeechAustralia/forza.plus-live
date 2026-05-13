@@ -7,7 +7,7 @@ const API_BASE_URL = (
 const STORAGE_SESSION_KEY = 'forza.accounts.sessionToken';
 const STRIPE_MEMBERSHIP_TIER = 'supporter';
 const STRIPE_CREATOR_SLUG = String(document.body.dataset.creatorSlug || 'forza').trim().toLowerCase() || 'forza';
-const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $7.77 <s>$17.77</s>';
+const MEMBERSHIP_CHECKOUT_LABEL_HTML = 'Start Membership - $17.77';
 
 const startMembershipCheckoutLink = document.getElementById('exclusiveStartMembershipCheckout');
 const membershipCheckoutMessage = document.getElementById('membershipCheckoutMessage');
@@ -82,12 +82,21 @@ async function requestCheckoutSession(token) {
   return checkoutUrl;
 }
 
+function navigateToAccountsViaSpa() {
+  if (window.location.pathname !== '/accounts') {
+    window.history.pushState({}, '', '/accounts');
+  }
+  window.dispatchEvent(new PopStateEvent('popstate'));
+}
+
 async function handleStartMembership(event) {
   event.preventDefault();
+  event.stopPropagation();
 
   const sessionToken = getSessionToken();
   if (!sessionToken) {
-    window.location.assign('/accounts');
+    setCheckoutMessage('Sign in first to start your membership.', 'info');
+    navigateToAccountsViaSpa();
     return;
   }
 
@@ -100,7 +109,8 @@ async function handleStartMembership(event) {
   } catch (error) {
     const normalizedMessage = String(error.message || '').toLowerCase();
     if (normalizedMessage.includes('session') || normalizedMessage.includes('authentication')) {
-      window.location.assign('/accounts');
+      setCheckoutMessage('Session expired. Sign in again to start your membership.', 'info');
+      navigateToAccountsViaSpa();
       return;
     }
 

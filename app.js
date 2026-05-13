@@ -27,9 +27,9 @@ const ROUTES = {
     key: 'exclusive',
     path: '/exclusive',
     title: 'Forza | Exclusive',
-    fragmentPath: '/fragments/exclusive.html?v=20260323-membership-discount',
+    fragmentPath: '/fragments/exclusive.html?v=20260512-membership-fullprice',
     mainClass: 'exclusive-main',
-    scriptPath: '/exclusive.js?v=20260323-membership-discount',
+    scriptPath: '/exclusive.js?v=20260512-membership-fullprice',
   },
   '/donate': {
     key: 'donate',
